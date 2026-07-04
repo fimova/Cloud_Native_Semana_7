@@ -129,6 +129,8 @@ jobs:
         -i private_key.pem \
         ${USER_SERVER}@${EC2_HOST} "
 
+        set -e
+
         export DB_USERNAME='${DB_USERNAME}'
         export DB_PASSWORD='${DB_PASSWORD}'
 
@@ -136,9 +138,20 @@ jobs:
         export AWS_SECRET_ACCESS_KEY='${AWS_SECRET_ACCESS_KEY}'
         export AWS_SESSION_TOKEN='${AWS_SESSION_TOKEN}'
 
-        docker login -u ${DOCKERHUB_USERNAME} -p ${DOCKERHUB_TOKEN}
-
         cd /home/ubuntu
+
+        # Instalar Docker Compose V2 si no existe
+        if ! docker compose version >/dev/null 2>&1; then
+
+          sudo apt-get update
+
+          sudo apt-get install -y docker-compose-v2 || \
+          sudo apt-get install -y docker-compose-plugin
+
+        fi
+
+        echo '${DOCKERHUB_TOKEN}' | docker login \
+          -u ${DOCKERHUB_USERNAME} \
 
         docker compose down
 
