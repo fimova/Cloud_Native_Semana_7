@@ -1,4 +1,4 @@
-name: CI-CD Plataforma Educativa
+name: CI-CD Plataforma Educativa 
 
 on:
   push:
