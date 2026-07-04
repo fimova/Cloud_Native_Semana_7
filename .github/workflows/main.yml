@@ -152,6 +152,7 @@ jobs:
 
         echo '${DOCKERHUB_TOKEN}' | docker login \
           -u ${DOCKERHUB_USERNAME} \
+          --password-stdin
 
         docker compose down
 
