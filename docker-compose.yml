@@ -34,7 +34,7 @@ services:
       RABBITMQ_PASSWORD: guest
 
     volumes:
-      - "C:/Users/franc/Downloads/wallet/Wallet_TESTDB1:/wallet"
+      - "/home/ubuntu/wallet:/wallet"
 
   consumidor:
 
@@ -58,4 +58,4 @@ services:
       RABBITMQ_PASSWORD: guest
 
     volumes:
-      - "C:/Users/franc/Downloads/wallet/Wallet_TESTDB1:/wallet"
+      - "/home/ubuntu/wallet:/wallet"
