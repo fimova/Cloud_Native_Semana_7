@@ -10,8 +10,7 @@ services:
 
   plataforma-educativa:
 
-    build:
-      context: ./PlataformaEducativa
+    image: fimova/plataforma-edu-productor:latest
 
     container_name: plataforma-educativa
 
@@ -39,8 +38,7 @@ services:
 
   consumidor:
 
-    build:
-      context: ./consumidor
+    image: fimova/plataforma-edu-consumidor:latest
 
     container_name: consumidor
 
